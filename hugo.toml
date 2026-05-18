@@ -1,0 +1,41 @@
+baseURL = 'https://abhijith-nagarajan.com'
+languageCode = 'en-us'
+title = 'Abhijith Nagarajan | Applied AI & Software Engineer'
+theme = 'PaperMod'
+
+[params]
+    env = 'production'
+    title = 'Abhijith Nagarajan'
+    description = 'Applied AI, Predictive Modeling, and Enterprise Automation'
+    
+    # Simple top-right navigation menu
+    [[params.menu.main]]
+        name = 'Projects'
+        url = '/projects/'
+        weight = 10
+    [[params.menu.main]]
+        name = 'Research'
+        url = '/research/'
+        weight = 20
+
+    # Profile Mode configuration (Your Homepage Landing Grid)
+    [params.profileMode]
+        enabled = true
+        title = 'Abhijith Nagarajan'
+        subtitle = 'Data Scientist & Software Engineer specializing in Applied AI, predictive modeling, operational analytics, and enterprise automation.'
+        imageUrl = '' # Add a link to a profile photo here later if you want
+        
+        [[params.profileMode.buttons]]
+            name = 'View Projects'
+            url = '/projects/'
+        [[params.profileMode.buttons]]
+            name = 'GitHub Profile'
+            url = 'https://github.com/abhijith-nagarajan'
+
+    # Social icons to display below your bio
+    [[params.socialIcons]]
+        name = 'github'
+        url = 'https://github.com/abhijith-nagarajan'
+    [[params.socialIcons]]
+        name = 'linkedin'
+        url = 'https://linkedin.com/in/Abhijith-Nagarajan' 
