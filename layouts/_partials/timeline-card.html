@@ -1,0 +1,40 @@
+{{/*
+  Renders one timeline card. Inputs: .page (a Page), .kind ("edu" or "work").
+  Tag chips are anchor links to /tags/<slug>/ for cross-content indexing.
+*/}}
+{{- $p := .page }}
+{{- $kind := .kind }}
+<article class="timeline__card timeline__card--{{ $kind }}">
+  <div class="timeline__card-head">
+    <div class="timeline__logo">
+      {{- with $p.Params.logo }}
+        {{- $logoPath := printf "logos/%s" . }}
+        {{- with resources.Get $logoPath }}
+        <img src="{{ .RelPermalink }}" alt="" loading="lazy">
+        {{- else }}
+        <span class="timeline__logo-placeholder">{{ substr $p.Title 0 2 | upper }}</span>
+        {{- end }}
+      {{- else }}
+        <span class="timeline__logo-placeholder">{{ substr $p.Title 0 2 | upper }}</span>
+      {{- end }}
+    </div>
+    <div class="timeline__card-title">
+      {{- $companies := $p.Params.companies }}
+      {{- if $companies }}
+      <h3 class="timeline__card-name"><a href="/companies/{{ index $companies 0 | urlize }}/">{{ $p.Title }}</a></h3>
+      {{- else }}
+      <h3 class="timeline__card-name">{{ $p.Title }}</h3>
+      {{- end }}
+      {{- with $p.Params.role }}<p class="timeline__card-role">{{ . }}</p>{{- end }}
+      {{- with $p.Params.dateLabel }}<p class="timeline__card-dates">{{ . }}</p>{{- end }}
+    </div>
+  </div>
+  <p class="timeline__card-desc">{{ $p.Params.description }}</p>
+  {{- with $p.Params.tags }}
+  <ul class="timeline__card-tech">
+    {{- range . }}
+    <li><a href="/tags/{{ . | urlize }}/" class="timeline__tech-link">{{ . }}</a></li>
+    {{- end }}
+  </ul>
+  {{- end }}
+</article>

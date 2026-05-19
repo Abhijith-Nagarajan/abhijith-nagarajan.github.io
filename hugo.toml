@@ -1,41 +1,48 @@
 baseURL = 'https://abhijith-nagarajan.com'
-languageCode = 'en-us'
-title = 'Abhijith Nagarajan | Applied AI & Software Engineer'
+locale = 'en-us'
+title = 'Abhijith Nagarajan'
 theme = 'PaperMod'
 
 [params]
     env = 'production'
     title = 'Abhijith Nagarajan'
     description = 'Applied AI, Predictive Modeling, and Enterprise Automation'
-    
-    # Simple top-right navigation menu
-    [[params.menu.main]]
-        name = 'Projects'
-        url = '/projects/'
-        weight = 10
-    [[params.menu.main]]
-        name = 'Research'
-        url = '/research/'
-        weight = 20
+    hideFooter = true
 
-    # Profile Mode configuration (Your Homepage Landing Grid)
-    [params.profileMode]
-        enabled = true
-        title = 'Abhijith Nagarajan'
-        subtitle = 'Data Scientist & Software Engineer specializing in Applied AI, predictive modeling, operational analytics, and enterprise automation.'
-        imageUrl = '' # Add a link to a profile photo here later if you want
-        
-        [[params.profileMode.buttons]]
-            name = 'View Projects'
-            url = '/projects/'
-        [[params.profileMode.buttons]]
-            name = 'GitHub Profile'
-            url = 'https://github.com/abhijith-nagarajan'
+    [params.label]
+        text = 'abhijith-nagarajan'
 
-    # Social icons to display below your bio
-    [[params.socialIcons]]
-        name = 'github'
-        url = 'https://github.com/abhijith-nagarajan'
-    [[params.socialIcons]]
-        name = 'linkedin'
-        url = 'https://linkedin.com/in/Abhijith-Nagarajan' 
+    # Landing-page content (consumed by layouts/index.html).
+    # `headline` renders in UPPERCASE (Manrope) — the designation.
+    # `subhead` stays in normal case — the specialty/description.
+    [params.landing]
+        headline = 'Data Scientist & Software Engineer'
+        subhead = 'Specializing in Applied AI, predictive modeling, operational analytics, and enterprise automation.'
+        email = 'abhijith3008@gmail.com'
+
+# Top-right navigation: text tabs + social icons in one nav bar.
+[[menu.main]]
+    identifier = 'about'
+    name = 'About'
+    url = '/about/'
+    weight = 10
+
+[[menu.main]]
+    identifier = 'projects'
+    name = 'Projects'
+    url = '/projects/'
+    weight = 20
+
+[[menu.main]]
+    identifier = 'blogs'
+    name = 'Blogs'
+    url = '/blogs/'
+    weight = 30
+
+# Taxonomies: tags (default) and companies (for grouping multiple roles
+# at the same employer). Add `companies: ["Name"]` to a content page to
+# generate /companies/name/ aggregating all entries.
+[taxonomies]
+    tag = "tags"
+    category = "categories"
+    company = "companies"

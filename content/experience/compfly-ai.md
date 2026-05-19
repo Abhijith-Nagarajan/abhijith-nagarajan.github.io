@@ -1,0 +1,29 @@
+---
+title: "CompFly AI"
+track: "work"
+role: "Software Engineer, Applied AI"
+date: 2025-12-01
+start: "2025-12"
+end: "present"
+period: 5
+periodLabel: "Dec 2025 – Present"
+description: "Developed AI evaluation frameworks, red-teaming workflows, and inference systems to improve the reliability, safety, and robustness of agentic AI applications."
+logo: "compfly.png"
+tags:
+  - "Agentic AI"
+  - "LLM Evaluation"
+  - "AI Safety"
+  - "Red Teaming"
+  - "Multi-Agent Systems"
+  - "LangGraph"
+  - "CrewAI"
+  - "MCP"
+  - "Python"
+  - "FastAPI"
+  - "Kubernetes"
+  - "GKE"
+  - "CI/CD"
+  - "Model Inference"
+  - "Runtime Reliability"
+  - "MLOps"
+---

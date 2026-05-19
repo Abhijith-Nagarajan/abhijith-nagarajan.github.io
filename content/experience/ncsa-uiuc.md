@@ -1,0 +1,29 @@
+---
+title: "NCSA, UIUC"
+track: "work"
+placement: "top"
+role: "Research Assistant, Generative & Agentic AI"
+date: 2025-07-01
+start: "2025-07"
+end: "2025-12"
+period: 4
+periodLabel: "Jul 2025 – Dec 2025"
+description: "Biomedical reasoning research on causal links between genetic perturbations and cancer phenotypes."
+logo: "ncsa.png"
+tags:
+  - "Biomedical AI"
+  - "Biomedical NLP"
+  - "Knowledge Graphs"
+  - "Neo4j"
+  - "Relation Extraction"
+  - "LLM Reasoning"
+  - "Multi-Hop Reasoning"
+  - "ReAct Agents"
+  - "LangGraph"
+  - "HuggingFace"
+  - "Transformers"
+  - "PyTorch"
+  - "Fine-Tuning"
+  - "RAG"
+  - "Ontologies"
+---

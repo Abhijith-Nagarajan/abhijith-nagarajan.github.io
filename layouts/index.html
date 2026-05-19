@@ -1,0 +1,97 @@
+{{- define "main" }}
+
+<section class="landing-hero">
+  <h1 class="landing-hero__headline">{{ site.Params.landing.headline }}</h1>
+  {{- with site.Params.landing.subhead }}
+  <p class="landing-hero__subhead">{{ . }}</p>
+  {{- end }}
+  {{- with site.Params.landing.pitch }}
+  <p class="landing-hero__pitch">{{ . }}</p>
+  {{- end }}
+  <div class="landing-hero__cta">
+    <a href="#projects" class="landing-btn landing-btn--primary">View Projects</a>
+    <a href="#writing" class="landing-btn">Read Blog</a>
+    <a href="#contact" class="landing-btn">Get in Touch</a>
+  </div>
+</section>
+
+{{- $featured := where (where site.RegularPages "Section" "projects") "Params.featured" true }}
+{{- $featured = $featured.ByWeight }}
+<section class="landing-section" id="projects">
+  <h2 class="landing-section__title">Featured Projects</h2>
+  {{- if $featured }}
+  <div class="landing-projects">
+    {{- range $featured }}
+    <article class="landing-project">
+      <header class="landing-project__header">
+        <h3 class="landing-project__title">{{ .Title }}</h3>
+        {{- with .Params.status }}
+        <span class="landing-badge landing-badge--{{ . | lower }}">{{ . }}</span>
+        {{- end }}
+      </header>
+      {{- with .Description }}
+      <p class="landing-project__desc">{{ . }}</p>
+      {{- end }}
+      {{- with .Params.metric }}
+      <p class="landing-project__metric">{{ . }}</p>
+      {{- end }}
+      {{- with .Params.tech }}
+      <ul class="landing-tags">
+        {{- range . }}<li class="landing-tag">{{ . }}</li>{{ end }}
+      </ul>
+      {{- end }}
+      <a class="landing-more" href="{{ .RelPermalink }}">Learn more →</a>
+    </article>
+    {{- end }}
+  </div>
+  {{- else }}
+  <p class="landing-empty">Featured projects coming soon.</p>
+  {{- end }}
+  <p class="landing-section__more"><a href="/projects/">View all projects →</a></p>
+</section>
+
+{{- $posts := first 3 (where site.RegularPages "Section" "blogs").ByDate.Reverse }}
+<section class="landing-section" id="writing">
+  <h2 class="landing-section__title">Recent Writing</h2>
+  {{- if $posts }}
+  <div class="landing-writing">
+    {{- range $posts }}
+    <article class="landing-post">
+      <h3 class="landing-post__title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+      <time class="landing-post__date" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time>
+      {{- with .Description }}
+      <p class="landing-post__excerpt">{{ . }}</p>
+      {{- else }}
+      <p class="landing-post__excerpt">{{ .Summary }}</p>
+      {{- end }}
+    </article>
+    {{- end }}
+  </div>
+  {{- else }}
+  <p class="landing-empty">New writing coming soon.</p>
+  {{- end }}
+  <p class="landing-section__more"><a href="/blogs/">View all writing →</a></p>
+</section>
+
+<section class="landing-section landing-section--contact" id="contact">
+  <h2 class="landing-section__title">Let's build something together</h2>
+  <p class="landing-contact__pitch">Have a project, a question about my work, or an opportunity to discuss? I'm always open to new challenges and collaborations.</p>
+  <div class="landing-contact">
+    <a class="landing-contact__link" href="https://github.com/abhijith-nagarajan" target="_blank" rel="noopener">
+      <svg class="landing-contact__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+      GitHub
+    </a>
+    <a class="landing-contact__link" href="https://linkedin.com/in/Abhijith-Nagarajan" target="_blank" rel="noopener">
+      <svg class="landing-contact__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+      LinkedIn
+    </a>
+    {{- with site.Params.landing.email }}
+    <a class="landing-contact__link" href="mailto:{{ . }}">
+      <svg class="landing-contact__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,7 12,13 22,7"/></svg>
+      Email
+    </a>
+    {{- end }}
+  </div>
+</section>
+
+{{- end }}

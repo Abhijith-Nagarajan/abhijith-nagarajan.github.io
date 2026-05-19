@@ -1,0 +1,30 @@
+---
+title: "Hewlett-Packard Inc."
+track: "work"
+role: "Software Engineer, RPA & AI"
+date: 2021-09-01
+start: "2021-09"
+end: "2023-07"
+period: 2
+periodLabel: "Sept 2021 – Jul 2023"
+description: "Built UiPath and OCR-based automation workflows across supply chain, customer support, finance, and marketing operations."
+logo: "hp.png"
+tags:
+  - "Software Engineering"
+  - "Intelligent Automation"
+  - "RPA"
+  - "UiPath"
+  - "OCR"
+  - "Document AI"
+  - "Computer Vision"
+  - "Python"
+  - "C#"
+  - "SQL"
+  - "Tesseract"
+  - "Human-in-the-Loop"
+  - "API Development"
+  - "Reusable Components"
+  - "CI/CD"
+  - "Azure DevOps"
+  - "Enterprise Automation"
+---

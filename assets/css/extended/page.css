@@ -1,0 +1,8 @@
+/* Center title on single non-blog pages (About, future Resume/Contact, etc.).
+   PaperMod renders an empty <div class="post-meta"> for all pages, so we can't
+   just check for its existence. Instead, check whether it has any element
+   children — blog posts populate it with date/read-time spans; about-like
+   pages leave it empty (whitespace only). */
+.post-header:not(:has(.post-meta *)) {
+    text-align: center;
+}

@@ -1,0 +1,81 @@
+{{/*
+  Renders the dual-track career/education timeline.
+  Reads from content/experience/*.md. Each entry's `tags` are indexed by
+  Hugo's taxonomy system, so each tag chip links to /tags/<slug>/ where
+  related content (projects, blog posts, other roles) is aggregated.
+*/}}
+
+{{- $experience := where site.RegularPages "Section" "experience" }}
+{{- $sorted := sort $experience "Params.period" }}
+
+{{/* Build ordered list of unique period IDs from the sorted entries. */}}
+{{- $periodIDs := slice }}
+{{- $periodLabels := dict }}
+{{- range $sorted }}
+  {{- $pid := .Params.period }}
+  {{- $key := string $pid }}
+  {{- if not (in $periodIDs $pid) }}
+    {{- $periodIDs = $periodIDs | append $pid }}
+    {{- $periodLabels = merge $periodLabels (dict $key .Params.periodLabel) }}
+  {{- end }}
+{{- end }}
+
+<section class="timeline" aria-label="Career and education timeline">
+  <header class="timeline__header">
+    <h2 class="timeline__title">Education &amp; Work</h2>
+    <div class="timeline__legend-row">
+      <span class="timeline__legend"><span class="timeline__dot timeline__dot--edu"></span>Education</span>
+      <span class="timeline__legend"><span class="timeline__dot timeline__dot--work"></span>Work</span>
+    </div>
+  </header>
+
+  <div class="timeline__rail" style="--cols: {{ len $periodIDs }}">
+    {{- range $pid := $periodIDs }}
+      {{- $key := string $pid }}
+      {{- $label := index $periodLabels $key }}
+      {{- $entries := where $sorted "Params.period" $pid }}
+      {{/* Split entries into top/bottom by `placement`, falling back to track-based default. */}}
+      {{- $topList := slice }}
+      {{- $bottomList := slice }}
+      {{- range $entries }}
+        {{- $defaultPlacement := cond (eq .Params.track "education") "top" "bottom" }}
+        {{- $placement := .Params.placement | default $defaultPlacement }}
+        {{- if eq $placement "top" }}
+          {{- $topList = $topList | append . }}
+        {{- else }}
+          {{- $bottomList = $bottomList | append . }}
+        {{- end }}
+      {{- end }}
+
+    <div class="timeline__column">
+
+      {{- if $topList }}
+      <div class="timeline__cell timeline__cell--edu">
+        {{- range $topList }}
+        {{- partial "timeline-card.html" (dict "page" . "kind" "edu") }}
+        {{- end }}
+      </div>
+      {{- else }}
+      <div class="timeline__cell timeline__cell--edu timeline__cell--empty" aria-hidden="true"></div>
+      {{- end }}
+
+      <div class="timeline__cell timeline__cell--date">
+        <div class="timeline__date-marker">
+          <span class="timeline__date-label">{{ $label }}</span>
+        </div>
+      </div>
+
+      {{- if $bottomList }}
+      <div class="timeline__cell timeline__cell--work">
+        {{- range $bottomList }}
+        {{- partial "timeline-card.html" (dict "page" . "kind" "work") }}
+        {{- end }}
+      </div>
+      {{- else }}
+      <div class="timeline__cell timeline__cell--work timeline__cell--empty" aria-hidden="true"></div>
+      {{- end }}
+
+    </div>
+    {{- end }}
+  </div>
+</section>

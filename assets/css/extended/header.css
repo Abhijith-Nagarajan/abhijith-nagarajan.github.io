@@ -1,0 +1,38 @@
+.header {
+    background: rgba(20, 20, 22, 0.95);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.22);
+    color: rgba(255, 255, 255, 0.92);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.header .logo a {
+    color: rgba(255, 255, 255, 0.96);
+    letter-spacing: -0.01em;
+}
+
+.header #menu a {
+    color: rgba(255, 255, 255, 0.78);
+    transition: color 0.15s ease;
+}
+
+.header #menu a:hover,
+.header #menu a span.active {
+    color: #fff;
+}
+
+.header #theme-toggle {
+    color: rgba(255, 255, 255, 0.82);
+}
+
+.header #theme-toggle:hover {
+    color: #fff;
+}
+
+[data-theme="dark"] .header {
+    background: rgba(10, 10, 12, 0.92);
+}
