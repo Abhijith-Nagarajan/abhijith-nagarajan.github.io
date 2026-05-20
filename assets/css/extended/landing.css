@@ -84,6 +84,7 @@
     color: var(--primary);
     margin: 0 0 28px;
     letter-spacing: -0.01em;
+    text-align: center;
 }
 
 .landing-section__more {
@@ -123,6 +124,31 @@
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 20px;
+}
+
+/* Landing "Featured Projects": break the card grid out beyond the text column
+   so all three sit in one horizontal row. Heading + "view all" link stay at
+   content width above. Collapses to 2 then 1 column on smaller screens. */
+.landing-section#projects .landing-projects {
+    width: min(1040px, 94vw);
+    margin-left: 50%;
+    transform: translateX(-50%);
+    grid-template-columns: repeat(3, 1fr);
+}
+
+@media (max-width: 820px) {
+    .landing-section#projects .landing-projects {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 560px) {
+    .landing-section#projects .landing-projects {
+        width: 100%;
+        margin-left: 0;
+        transform: none;
+        grid-template-columns: 1fr;
+    }
 }
 
 .landing-project {

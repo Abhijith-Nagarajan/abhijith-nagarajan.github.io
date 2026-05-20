@@ -6,7 +6,7 @@ theme = 'PaperMod'
 [params]
     env = 'production'
     title = 'Abhijith Nagarajan'
-    description = 'Applied AI, Predictive Modeling, and Enterprise Automation'
+    description = 'Applied AI Engineer & Data Scientist building scalable AI, analytics, and automation systems from prototype to production.'
     hideFooter = true
 
     [params.label]
