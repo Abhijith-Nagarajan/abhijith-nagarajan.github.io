@@ -1,18 +1,33 @@
 {{- define "main" }}
 
 <section class="landing-hero">
-  <h1 class="landing-hero__headline">{{ site.Params.landing.headline }}</h1>
-  {{- with site.Params.landing.subhead }}
-  <p class="landing-hero__subhead">{{ . }}</p>
-  {{- end }}
-  {{- with site.Params.landing.pitch }}
-  <p class="landing-hero__pitch">{{ . }}</p>
-  {{- end }}
-  <div class="landing-hero__cta">
-    <a href="#projects" class="landing-btn landing-btn--primary">View Projects</a>
-    <a href="#writing" class="landing-btn">Read Blog</a>
-    <a href="#contact" class="landing-btn">Get in Touch</a>
+  <div class="landing-hero__text">
+    <h1 class="landing-hero__headline">{{ site.Params.landing.headline }}</h1>
+    {{- with site.Params.landing.subhead }}
+    <p class="landing-hero__subhead">{{ . }}</p>
+    {{- end }}
+    {{- with site.Params.landing.pitch }}
+    <p class="landing-hero__pitch">{{ . }}</p>
+    {{- end }}
+    <div class="landing-hero__cta">
+      <a href="#projects" class="landing-btn landing-btn--primary">View Projects</a>
+      <a href="#writing" class="landing-btn">Read Blog</a>
+      <a href="#contact" class="landing-btn">Get in Touch</a>
+    </div>
   </div>
+  {{- with resources.Get "images/profile.svg" }}
+  <div class="landing-hero__media">
+    <figure class="hero-split">
+      <img class="hero-split__img" src="{{ .RelPermalink }}" alt="Abhijith Nagarajan" width="240" height="240">
+      <span class="hero-split__tint hero-split__tint--left"></span>
+      <span class="hero-split__tint hero-split__tint--right"></span>
+      <figcaption class="hero-split__labels">
+        <span class="hero-split__label hero-split__label--left">Applied AI</span>
+        <span class="hero-split__label hero-split__label--right">Data Science</span>
+      </figcaption>
+    </figure>
+  </div>
+  {{- end }}
 </section>
 
 {{- $featured := where (where site.RegularPages "Section" "projects") "Params.featured" true }}
